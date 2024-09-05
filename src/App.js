@@ -1,25 +1,36 @@
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Dashboard from './components/Dashboard';
+import PatientRegistration from './components/PatientRegistration';
+import AppointmentScheduling from './components/AppointmentScheduling';
+import PatientRecords from './components/PatientRecords';
+import Notifications from './components/Notifications';
+import Login from './components/Login';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    render() {
+        return (
+            <Router>
+                <div className="app-container">
+                    <Header />
+                    <main>
+                        <Routes>
+                            <Route path="/" element={<Login />} />
+                            <Route path="/dashboard" element={<Dashboard />} />
+                            <Route path="/patient-registration" element={<PatientRegistration />} />
+                            <Route path="/appointment-scheduling" element={<AppointmentScheduling />} />
+                            <Route path="/patient-records" element={<PatientRecords />} />
+                            <Route path="/notifications" element={<Notifications />} />
+                        </Routes>
+                    </main>
+                    <Footer />
+                </div>
+            </Router>
+        );
+    }
 }
 
 export default App;
